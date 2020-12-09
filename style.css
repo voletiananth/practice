@@ -4,9 +4,13 @@ body{
   position: relative;
 }
 
-body a{
-    color: black;;
+.margin-zero{
+    margin: 0px;
 }
+
+body a{
+    color: black;
+    text-decoration: none;}
 
 .mid-black a{
     color: rgb(26, 23, 23);
@@ -235,8 +239,6 @@ body a{
 
  .form-popup{
     border: 3px solid #f1f1f1;
-    width: 350px;
-    height: 280px;
     overflow: hidden;
     z-index: 9; 
     margin: 0;
@@ -246,6 +248,7 @@ body a{
     left: 50%;
     transform: translate(-50%,100px);
     display: none;
+   
     
   
  }
@@ -266,9 +269,34 @@ body a{
  
  .main-content{
      border: 1px solid  ;
-     padding:12px;
+    padding: 16px;
      display: grid;
-     grid-template-columns: auto auto auto auto;
+     grid-template-columns:  repeat(4, 1fr)    ;
+     grid-template-rows: repeat(auto-fill, 74px);
+     column-gap: 8px;
+     row-gap: 20px;
+     min-height: 300px;
+     margin-bottom: 80px;
+ }
+
+ .employee{
+    padding: 8px;
+    border: 1px solid black;
+     height: 56px;
+      width: 220px;
+ }
+
+ .employee-img{
+    position: relative;
+    
+ }
+
+ .employee-img img{
+     border: 1px solid black;
+ }
+
+ .a-small{
+     font-size: 12px;
  }
  
  
