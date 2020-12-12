@@ -10,6 +10,10 @@ function closeForm() {
     Array.from(temp).forEach((e)=>{
       e.innerHTML=""
     })
+    formInputs.forEach((e)=>{
+      document.getElementById(e).value=""
+    })
+    document.getElementById('pname').value = ""
 }
 
 
