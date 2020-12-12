@@ -296,7 +296,6 @@ body a{
     color: white;
     background-color: #900;
     border-radius: 0 0 5px 5px;
-    display: none;
     box-sizing: border-box;
   }
   
@@ -312,8 +311,9 @@ body a{
     background-color: white;
     position: absolute;
     left: 50%;
-    transform: translate(-50%,24px) 
-  
+    transform: translate(-50%,24px) ;
+    display: none;
+    
  }
 
 
