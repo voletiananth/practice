@@ -237,6 +237,72 @@ body a{
 
 
 
+.item-input *,.item-block{
+    display: block;
+}
+
+.item{
+    margin: 8px;
+}
+
+
+
+.item-label p{
+    margin: 0;
+}
+
+.flex-div{
+    display:flex
+}
+
+.input-middle{
+    margin: 0px 4px;
+}
+.input-last{
+    flex: auto;
+}
+.width-100{
+    width: 100%;
+}
+
+
+
+
+
+.item input{
+    -webkit-appearance: none;
+    appearance: none;
+  
+    width: 100%;
+    border: 1px solid #333;
+    margin: 0;
+  
+    font-family: inherit;
+    font-size: 90%;
+  
+    box-sizing: border-box;
+  }
+  
+  
+
+
+  
+  
+ 
+.error {
+    width  : 100%;
+    padding: 0;
+    font-size: 80%;
+    color: white;
+    background-color: #900;
+    border-radius: 0 0 5px 5px;
+    display: none;
+    box-sizing: border-box;
+  }
+  
+ 
+
+
  .form-popup{
     border: 3px solid #f1f1f1;
     overflow: hidden;
@@ -246,25 +312,11 @@ body a{
     background-color: white;
     position: absolute;
     left: 50%;
-    transform: translate(-50%,100px);
-    display: none;
-   
-    
+    transform: translate(-50%,24px) 
   
  }
 
- .form-popup label{
-   
 
- }
-
- .form-popup form div{
-     margin: 8px;
- }
- .form-popup input{
-    float: right;
-    
- }
 
  
  .main-content{

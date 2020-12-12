@@ -9,41 +9,32 @@ function closeForm() {
 
 
 class Employee {
-    constructor(node) {
-        this.firstName = node.elements["fname"].value
-        this.lastName = node.elements["lname"].value
-        this.email = node.elements["pname"].value
-        this.jobTitle = node.elements["jobTitle"].value
-        this.office = node.elements["office"].value
-        this.department = node.elements["department"].value
-        this.phoneNumber = node.elements["phoneNumber"].value
-        this.skypeId = node.elements["skypeId"].value
-
-
+    constructor(firstName,lastName,email,jobTitle,office,department,phoneNumber,skypeId) {
+        this.firstName = firstName
+        this.lastName = lastName
+        this.email = email
+        this.jobTitle = jobTitle
+        this.office = office
+        this.department = department
+        this.phoneNumber = phoneNumber
+        this.skypeId = skypeId
     }
-
-
 
 }
 
 
 var employeeData = [];
 
-var formInputs = ["fname","lname","email","jobTitle","office","department","phoneNumber","skypeId"];
+var formInputs = ["fname","lname","email","job_title","office","department","phoneNumber","skypeId"];
 
 function submitEmployee(){
-
-
-    var info = new Employee(document.getElementById("employeeForm"))
-    console.log(info)
-   closeForm()
-   addEmployee(info.firstName+" "+info.lastName,info.jobTitle,info.department)
+   
 }
 
 
 
 
-function addEmployee(name,title,department) {
+function addEmployee(employee) {
     var empDiv = document.createElement("div")
     empDiv.classList.add("employee")
     var empImgDiv = document.createElement("div")
@@ -64,14 +55,14 @@ function addEmployee(name,title,department) {
     var empNameDiv = document.createElement("div")
     var empName = document.createElement("h4")
     empName.classList.add("margin-zero")
-    empName.appendChild(document.createTextNode(name))
+    empName.appendChild(document.createTextNode(employee.firstName+" "+employee.lastName))
     empNameDiv.appendChild(empName)
     empData.appendChild(empNameDiv)
 
     var empTitleDiv = document.createElement("div")
     var empTitle = document.createElement("a")
     empTitle.classList.add("a-small")
-    empTitle.appendChild(document.createTextNode(title))
+    empTitle.appendChild(document.createTextNode(employee.jobTitle))
     empTitleDiv.appendChild(empTitle)
     empData.appendChild(empTitleDiv)
 
@@ -80,7 +71,7 @@ function addEmployee(name,title,department) {
     var empDepartDiv = document.createElement("div")
     var empDepart = document.createElement("a")
     empDepart.classList.add("a-small")
-    empDepart.appendChild(document.createTextNode(department))
+    empDepart.appendChild(document.createTextNode(employee.department))
     empDepartDiv.appendChild(empDepart)
     empData.appendChild(empDepartDiv)
 
@@ -89,3 +80,6 @@ function addEmployee(name,title,department) {
 
     document.getElementById("employee-content").appendChild(empDiv)
 }
+
+
+const form = document.getElementById("emplyoee_form")

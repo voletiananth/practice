@@ -5,57 +5,144 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="style.css" />
+    
   </head>
   <body>
     <div class="form-popup" id="addEmployeeForm">
-      <div style="width: 100%;">
-        <form id="employeeForm">
-          <div>
-            <img width="48" height="48">
-            <button>Choose</button>
-          </div>
-          <div>
-            <label for="firstName">First&nbsp;Name&nbsp;&colon;&nbsp;</label>
-           <input name="fname" type="text" />
-          </div>
-          <div>
-            <label for="lastName">Last&nbsp;Name&nbsp;&colon;&nbsp;</label>
-          <input name="lname" type="text" />
-          </div>
-          <div>
-            <label for="preferredName">Preferred&nbsp;Name&nbsp;&colon;&nbsp;</label>
-          <input name="pname" type="text" />
-          </div>
-          <div>
-            <label for="email">Email&nbsp;&colon;&nbsp;</label>
-          <input name="email" type="text" />
-          </div>
-          <div>
-            <label for="jobTitle">Job&nbsp;Title&nbsp;&colon;&nbsp;</label>
-          <input name="jobTitle" type="text" />
-          </div>
-          <div>
-            <label for="office">Office&nbsp;&colon;&nbsp;</label>
-          <input name="office" type="text" />
-          </div>
-          <div>
-            <label for="department">Department&nbsp;&colon;&nbsp;</label>
-          <input name="department" type="text" />
-          </div>
+        <form id="employee_form" novalidate>
          <div>
-          <label for="phoneNumber">Phone&nbsp;Number&nbsp;&colon;&nbsp;</label>
-          <input name="phoneNumber" type="text" />
+          <div class="item a-inline" >
+            <div class="item-label">
+              <p>First Name:</p>
+            </div>
+            <div class="item-input">
+                <input type="text">
+                <span class="error">Please fill this field</span>
+            </div>
+          </div>
+          <div   class="item a-inline" >
+            <div class="item-label">
+              <p>Last Name:</p>
+            </div>
+            <div class="item-input">
+                <input type="text">
+                <span class="error">Please fill this field</span>
+            </div>
+          </div>
          </div>
-         <div>
-          <label for="skypeId">Skype&nbsp;ID&nbsp;&colon;&nbsp;</label>
-          <input name="skypeId" type="text" />
-         </div>
-         <div style="padding-top: 16px;">
-           <button id="close" onclick="closeForm()" style="float: left;">Cancel</button>
-           <button type="button" id="employeeSubmit" style="float: right; " onclick="submitEmployee()">Submit</button>
-         </div>
-          </form>
-      </div>
+
+
+         <div class="item" >
+          <div class="item-label">
+            <p>Preferred Name:</p>
+          </div>
+          <div class="item-input">
+              <input type="text" readonly>
+          </div>
+        </div>
+        
+        <div class="item" >
+          <div class="item-label">
+            <p>Email:</p>
+          </div>
+          <div class="item-input">
+              <input type="email">
+              <span class="error">Please fill this field</span>
+          </div>
+        </div>
+
+
+        <div class="item">
+          <div>
+            <div class="item-label">
+              <p>Job Title:</p>
+            </div>
+            <div class="flex-div"  >
+               <div class="item-input">
+                 <input type="text">
+                 <span class="error">Please fill this field</span>  
+               </div>
+               <div class="input-middle">--or--</div>
+               <div class="input-last" >
+                 <select class="width-100"  > 
+                  <option>Select</option>
+                </select>
+               </div>
+            </div>
+          </div>
+        </div>
+
+      
+        <div class="item">
+          <div>
+            <div class="item-label">
+              <p>Office:</p>
+            </div>
+            <div class="flex-div"  >
+               <div class="item-input">
+                 <input type="text">
+                 <span class="error">Please fill this field</span>  
+               </div>
+               <div class="input-middle">--or--</div>
+               <div class="input-last" >
+                 <select class="width-100"  > 
+                  <option>Select</option>
+                </select>
+               </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div>
+            <div class="item-label">
+              <p>Department:</p>
+            </div>
+            <div class="flex-div"  >
+               <div class="item-input">
+                 <input type="text">
+                 <span class="error">Please fill this field</span>  
+               </div>
+               <div class="input-middle">--or--</div>
+               <div class="input-last" >
+                 <select class="width-100"  > 
+                  <option>Select</option>
+                </select>
+               </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="item" >
+          <div class="item-label">
+            <p>Phone Number:</p>
+          </div>
+          <div class="item-input">
+              <input type="text">
+              <span class="error">Please fill this field</span>
+          </div>
+        </div>
+
+
+        <div class="item" >
+          <div class="item-label">
+            <p>Skype ID:</p>
+          </div>
+          <div class="item-input">
+              <input type="text">
+              <span class="error">Please fill this field</span>
+          </div>
+        </div>
+
+        <div style="padding: 16px 8px;">
+          <button style="float: left;">Cancel</button>
+          <button style="float: right;">Submit</button>
+        </div>
+      
+         
+    
+        </form>
     </div>
     <div class="header mid-black">
       <div class="header-left">
