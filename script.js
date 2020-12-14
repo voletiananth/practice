@@ -184,6 +184,7 @@ function validation() {
 
   if (flag) {
     addEmployee(convertArrayToObject(formInputs))
+    closeForm()
   }
 
 
