@@ -326,10 +326,10 @@ body a{
  }
 
  .employee{
-    padding: 8px;
+    padding: 4px;
     border: 1px solid black;
      height: 56px;
-      width: 220px;
+      width: 230px;
  }
 
  .employee-img{
