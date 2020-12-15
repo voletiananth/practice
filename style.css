@@ -101,6 +101,7 @@ body a{
      padding-bottom: 12px;
  }
  .category{
+     min-height: 120px;
      padding-bottom: 28px;
  }
 
