@@ -1,16 +1,90 @@
 function openForm() {
+  
   var formdiv = document.getElementById("addEmployeeForm")
   formdiv.style.display = "block";
+  addPrefer()
 
 }
 
 function closeForm() {
   var formdiv = document.getElementById("addEmployeeForm")
   formdiv.style.display = "none"
+  removePrefer()
 
 
 
 }
+
+function removePrefer(){
+  const department = document.getElementById("department-select")
+  const jobTitle = document.getElementById("job-title-select")
+  const office = document.getElementById("office-select")
+
+  for(i=1;i<=department.options.length;i++){
+    department.removeChild(department.options[i])
+  }
+
+  for(i=1;i<=jobTitle.options.length;i++){
+    jobTitle.removeChild(jobTitle.options[i])
+  }
+
+  for(i=1;i<=office.options.length;i++){
+    office.removeChild(office.options[i])
+  }
+
+  
+ 
+}
+
+function addPrefer(){
+
+  const department = document.getElementById("department-select")
+  const jobTitle = document.getElementById("job-title-select")
+  const office = document.getElementById("office-select")
+  Object.keys(departments).forEach((name)=>{
+    const option = document.createElement("option")
+    option.appendChild(document.createTextNode(name))
+    department.appendChild(option)
+  })
+
+  Object.keys(offices).forEach((name)=>{
+    const option = document.createElement("option")
+    option.appendChild(document.createTextNode(name))
+    office.appendChild(option)
+  })
+
+  Object.keys(jobTitles).forEach((name)=>{
+    const option = document.createElement("option")
+    option.appendChild(document.createTextNode(name))
+    jobTitle.appendChild(option)
+  })
+
+
+}
+
+
+function departmentSelected(){
+  const departmentSelect = document.getElementById("department-select")
+  const department = document.getElementById("department")
+  department.value = departmentSelect.value
+}
+
+function jobTitleSelected(){
+  const jobTitleSelect = document.getElementById("job-title-select")
+  const jobTitle = document.getElementById("job-title")
+  jobTitle.value = jobTitleSelect.value
+}
+
+function officeSelected(){
+  const officeSelect = document.getElementById("office-select")
+  const office = document.getElementById("office")
+  office.value = officeSelect.value
+
+}
+
+
+
+
 
 function addListeners() {
 
@@ -32,6 +106,13 @@ function addListeners() {
     lastName = lname.value
     document.getElementById('pname').value = firstName + " " + lastName
   })
+
+
+ 
+ 
+
+  
+
 }
 
 
@@ -41,29 +122,99 @@ addListeners()
 
 
 var employeeData = [];
+var departments = {}
+var offices = {}
+var jobTitles = {}
 
 
 
 
+function addFilter(employee) {
+  const department = departments[employee.department]
+  const office = offices[employee.office]
+  const jobTitle = jobTitles[employee.jobTitle]
+  if (typeof department === "undefined") {
+    departments[employee.department] = 1
+  } else {
+    departments[employee.department] = department + 1
+  }
+
+  if (typeof office === "undefined") {
+    offices[employee.office] = 1
+  }
+  else {
+    offices[employee.office] = office + 1
+  }
+
+  if (typeof jobTitle === "undefined") {
+    jobTitles[employee.jobTitle] = 1
+  } else {
+    jobTitles[employee.jobTitle] = jobTitle + 1
+  }
+
+  addFilterItems("departments-list", departments)
+  addFilterItems("offices-list", offices)
+  addFilterItems("job-titles-list", jobTitles)
+
+}
+
+
+
+function addFilterItems(ulName, list) {
+
+  const ul = document.getElementById(ulName);
+  ul.innerHTML = ""
+  Object.keys(list).forEach((name) => {
+    const li = document.createElement("li")
+    const a = document.createElement("a")
+    a.appendChild(document.createTextNode(name + " ("))
+    a.appendChild(document.createTextNode(list[name]))
+    a.appendChild(document.createTextNode(")"))
+    a.onclick = (e)=>{
+        console.log(name)
+    }
+    li.appendChild(a)
+    ul.appendChild(li)
+  })
+
+
+
+}
+
+function clearForm(){
+  const inputs = document.querySelectorAll(".item-input input")
+  inputs.forEach((e)=>{
+    e.value=""
+  })
+
+}
+
+
+
+
+function showImage(event) {
+  document.getElementById('pimg').src = URL.createObjectURL(event.target.files[0]);
+}
 
 function addEmployee(employee) {
-  employeeData.push(employee)
+
   var empDiv = document.createElement("div")
   empDiv.classList.add("employee")
   var empImgDiv = document.createElement("div")
   empImgDiv.classList.add("a-inline")
   empImgDiv.classList.add("employee-img")
   var empImg = document.createElement("img")
-  empImg.src = "man128.png"
-  empImg.width = 56
-  empImg.height = 56
+  empImg.src = employee.img
+  empImg.width = 60
+  empImg.height = 64
   empImgDiv.appendChild(empImg)
   empDiv.appendChild(empImgDiv)
 
 
 
   var empData = document.createElement("div")
-  empData.classList.add("a-inline")
+  empData.classList.add("a-inline employee-details")
+  
 
   var empNameDiv = document.createElement("div")
   var empName = document.createElement("h4")
@@ -88,72 +239,80 @@ function addEmployee(employee) {
   empDepartDiv.appendChild(empDepart)
   empData.appendChild(empDepartDiv)
 
+  var tdiv = document.createElement("div")
+  var call = document.createElement("img")
+  call.width =12
+  call.height = 12
+  tdiv.appendChild(call)
+  var mail = document.createElement("img")
+  mail.width =12
+  mail.height =12
+  tdiv.appendChild(mail)
+  var msg = document.createElement("img")
+  msg.width = 12
+  msg.height = 12
+  tdiv.appendChild(msg)
+  var star = document.createElement("img")
+  star.width = 12
+  star.height =12
+  tdiv.appendChild(star)
+  var heart = document.createElement("img")
+  heart.width = 12
+  heart.height =12
+  tdiv.appendChild(heart)
+  empData.appendChild(tdiv)
+
 
   empDiv.appendChild(empData)
   document.getElementById("employee-content").appendChild(empDiv)
 
-
-  closeForm() 
+  addFilter(employee)
+  
 }
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-function addFilters() {
+function submitEmployeeForm(){
+  const img = document.getElementById('pimg')
+  const firstName = document.getElementById('fname')
+  const lastName = document.getElementById('lname')
+  const email = document.getElementById('email')
+  const jobTitle = document.getElementById('job-title')
+  const office = document.getElementById('office')
+  const department = document.getElementById('department')
+  const phoneNumber = document.getElementById('phone-number')
+  const skypeId = document.getElementById('skype-id')
+   const employee = new Employee(img.src, firstName.value, lastName.value, email.value, jobTitle.value, office.value, department.value, phoneNumber.value, skypeId.value)
+   addEmployee(employee)
+   employeeData.push(employee)
+   closeForm()
+   clearForm()
 
 }
-
-addFilters()
 
 
 
 class Employee {
 
-  constructor(firstName,lastName,email,jobTitle,office,department,phoneNumber,skypeId){
-      this.firstName = firstName
-      this.lastName = lastName
-      this.email = email
-      this.jobTitle = jobTitle
-      this.office = office
-      this.department = department
-      this.phoneNumber = phoneNumber
-      this.skypeId = skypeId
+  constructor(img, firstName, lastName, email, jobTitle, office, department, phoneNumber, skypeId) {
+    this.img = img
+    this.firstName = firstName
+    this.lastName = lastName
+    this.email = email
+    this.jobTitle = jobTitle
+    this.office = office
+    this.department = department
+    this.phoneNumber = phoneNumber
+    this.skypeId = skypeId
   }
 }
 
 
 
 
-function validation() {
 
-
-
-const firstName = document.getElementById('fname').value
-const lastName = document.getElementById('lname').value
-const email = document.getElementById('email').value
-const jobTitle = document.getElementById('job_title').value
-const office = document.getElementById('office').value
-const department = document.getElementById('department').value
-const phoneNumber = document.getElementById('phone_number').value
-const skypeId = document.getElementById('skype_id').value
-
-addEmployee(new Employee(firstName,lastName,email,jobTitle,office,department,phoneNumber,skypeId))
-
-
-}
 
 
 

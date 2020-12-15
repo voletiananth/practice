@@ -9,21 +9,25 @@
   </head>
   <body>
     <div class="form-popup" id="addEmployeeForm">
-      <form id="employee_form" novalidate>
+      <form onsubmit="return submitEmployeeForm()" id="employee-form" >
+        <div>
+          <div class="a-inline" ><img id="pimg" width="60" height="60"></div>
+          <div class="a-inline" ><input id="imgChoose" onchange="showImage(event)" type="file" id="img" name="img" accept="image/*" required></div>
+        </div>
         <div>
          <div class="item a-inline" >
            <div class="item-label">
-             <p>First Name:</p>
+             <label for="fname">First Name:</label>
            </div>
            <div class="item-input">
                <input id="fname" type="text" required>
-               <span id="fname_error" class="error"></span>
+
            </div>
          </div>
        
          <div   class="item a-inline" >
            <div class="item-label">
-             <p>Last Name:</p>
+             <label for="lname">Last Name:</label>
            </div>
            <div class="item-input">
                <input id="lname" type="text" required>
@@ -35,7 +39,7 @@
        
         <div class="item" >
          <div class="item-label">
-           <p>Preferred Name:</p>
+           <label for="pname">Preferred Name:</label>
          </div>
          <div class="item-input">
              <input id="pname" type="text" disabled>
@@ -44,11 +48,11 @@
        
        <div class="item" >
          <div class="item-label">
-           <p>Email:</p>
+           <label for="email">Email:</label>
          </div>
          <div class="item-input">
              <input id="email" type="email" required>
-             <span id="email_error" class="error"></span>
+             
          </div>
        </div>
        
@@ -56,16 +60,16 @@
        <div class="item">
          <div>
            <div class="item-label">
-             <p>Job Title:</p>
+             <label for="job-title">Job Title:</label>
            </div>
            <div class="flex-div"  >
               <div class="item-input">
-                <input id="job_title" type="text" required>
-                <span id="job_title_error" class="error"></span>  
+                <input id="job-title" type="text" required>
+               
               </div>
               <div class="input-middle">--or--</div>
               <div class="input-last" >
-                <select id="job_title_select" class="width-100"  > 
+                <select id="job-title-select" onchange="jobTitleSelected()" class="width-100"  > 
                  <option>Prefer a Job Title</option>
                </select>
               </div>
@@ -77,16 +81,16 @@
        <div class="item">
          <div>
            <div class="item-label">
-             <p>Office:</p>
+             <label for="office">Office:</label>
            </div>
            <div class="flex-div"  >
               <div class="item-input">
                 <input id="office" type="text" required>
-                <span id="office_error" class="error"></span>  
+              
               </div>
               <div class="input-middle">--or--</div>
               <div class="input-last" >
-                <select id="office_select" class="width-100"  > 
+                <select id="office-select" onchange="officeSelected()" class="width-100"  > 
                  <option>Prefer an Office</option>
                </select>
               </div>
@@ -97,16 +101,16 @@
        <div class="item">
          <div>
            <div class="item-label">
-             <p>Department:</p>
+             <label for="department">Department:</label>
            </div>
            <div class="flex-div"  >
               <div class="item-input">
                 <input id="department" type="text" required>
-                <span id="department_error" class="error"></span>  
+                
               </div>
               <div class="input-middle">--or--</div>
               <div class="input-last" >
-                <select id="department_select" class="width-100"  > 
+                <select id="department-select" onchange="departmentSelected()" class="width-100"  > 
                  <option>Prefer a Department</option>
                </select>
               </div>
@@ -117,27 +121,28 @@
        
        <div class="item" >
          <div class="item-label">
-           <p>Phone Number:</p>
+           <label for="phone-number">Phone Number:</label>
+         
          </div>
          <div class="item-input">
-             <input id="phone_number" type="number">
-             <span id="phone_number_error" class="error"></span>
+             <input id="phone-number" type="text" required>
+             <span id="phone-number-error" class="error"></span>
          </div>
        </div>
        
        
        <div class="item" >
          <div class="item-label">
-           <p>Skype ID:</p>
+           <label for="skype-id">Skype ID</label>
          </div>
          <div class="item-input">
-             <input id="skype_id" type="text">
-             <span id="skype_id_error" class="error"></span>
+             <input id="skype-id" type="text" required>
+             <span id="skype-id-error" class="error"></span>
          </div>
        </div>
        <div style="padding: 16px 8px;">
          <button type="reset" onclick="closeForm()" style="float: left;">Cancel</button>
-         <button type="button" onclick="validation()" style="float: right;">Submit</button>
+         <button type="submit"  style="float: right;">Submit</button>
        </div>
        
         
@@ -171,17 +176,17 @@
       <div class="left-content" id="filter-content">
         <div class="category mid-black" id="departments">
           <h4>Departments</h4>
-          <ul id="departments_list">
+          <ul id="departments-list">
 
           </ul>
         </div>
         <div class="category mid-black" id="offices">
           <h4>Offices</h4>
-          <ul id="offices_list"></ul>
+          <ul id="offices-list"></ul>
         </div>
         <div class="category mid-black" id="job_titles">
           <h4>Job Titles</h4>
-          <ul id="job_titles_list"></ul>
+          <ul id="job-titles-list"></ul>
         </div>
       </div>
       </div>
@@ -248,7 +253,26 @@
         </div>
 
         <div class="main-content" id="employee-content">
-          
+          <div class="employee">
+            <div class="a-inline employee-img">
+              <img src="man128.png" width="60" height="64" >
+            </div>
+            <div class="a-inline employee-details ">
+              <div><h4 class="margin-zero"> Anthony Morris</h4></div>
+              <div><a class="a-small">SharePoint Practice Head</a></div>
+              <div><a class="a-small" >IT Department</a></div>
+              <div>
+                
+                <img  src="call.png" width="12" height="12">
+                <img  src="mail.png" width="12" height="12">
+                <img  src="speech-bubble.png" width="12" height="12">
+                <img  src="star.png" width="12" height="12">
+                <img  src="heart.png" width="12" height="12">
+
+              </div>
+              </div>
+            </div>
+        
         </div>
       </div>
     </div>
