@@ -328,6 +328,11 @@ body a{
      padding-left: 4px;
  }
 
+ .employee-details img {
+     margin-right: 4px;
+    
+ }
+
  .employee{
     height: 72px;
     padding: 6px;

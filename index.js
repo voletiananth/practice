@@ -21,20 +21,22 @@ function removePrefer(){
   const office = document.getElementById("office-select")
 
   for(i=1;i<=department.options.length;i++){
-    department.removeChild(department.options[i])
+    department.remove(i)
   }
 
   for(i=1;i<=jobTitle.options.length;i++){
-    jobTitle.removeChild(jobTitle.options[i])
+    jobTitle.remove(i)
   }
 
   for(i=1;i<=office.options.length;i++){
-    office.removeChild(office.options[i])
+    office.remove(i)
   }
 
   
  
 }
+
+// add view more and view less
 
 function addPrefer(){
 
@@ -213,7 +215,8 @@ function addEmployee(employee) {
 
 
   var empData = document.createElement("div")
-  empData.classList.add("a-inline employee-details")
+  empData.classList.add("a-inline")
+  empData.classList.add("employee-details")
   
 
   var empNameDiv = document.createElement("div")
@@ -241,22 +244,27 @@ function addEmployee(employee) {
 
   var tdiv = document.createElement("div")
   var call = document.createElement("img")
+  call.src="call.png"
   call.width =12
   call.height = 12
   tdiv.appendChild(call)
   var mail = document.createElement("img")
+  mail.src ="mail.png"
   mail.width =12
   mail.height =12
   tdiv.appendChild(mail)
   var msg = document.createElement("img")
+  msg.src="speech-bubble.png"
   msg.width = 12
   msg.height = 12
   tdiv.appendChild(msg)
   var star = document.createElement("img")
+  star.src = "star.png"
   star.width = 12
   star.height =12
   tdiv.appendChild(star)
   var heart = document.createElement("img")
+  heart.src = "heart.png"
   heart.width = 12
   heart.height =12
   tdiv.appendChild(heart)
