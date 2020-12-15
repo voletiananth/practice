@@ -174,6 +174,7 @@ function addFilterItems(ulName, list) {
     a.appendChild(document.createTextNode(")"))
     a.onclick = (e)=>{
         console.log(name)
+        //todo
     }
     li.appendChild(a)
     ul.appendChild(li)
