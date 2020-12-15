@@ -46,8 +46,6 @@ var employeeData = [];
 
 
 
-
-
 function addEmployee(employee) {
   employeeData.push(employee)
   var empDiv = document.createElement("div")
@@ -93,6 +91,9 @@ function addEmployee(employee) {
 
   empDiv.appendChild(empData)
   document.getElementById("employee-content").appendChild(empDiv)
+
+
+  closeForm() 
 }
 
 
@@ -119,6 +120,20 @@ addFilters()
 
 
 
+class Employee {
+
+  constructor(firstName,lastName,email,jobTitle,office,department,phoneNumber,skypeId){
+      this.firstName = firstName
+      this.lastName = lastName
+      this.email = email
+      this.jobTitle = jobTitle
+      this.office = office
+      this.department = department
+      this.phoneNumber = phoneNumber
+      this.skypeId = skypeId
+  }
+}
+
 
 
 
@@ -126,7 +141,16 @@ function validation() {
 
 
 
+const firstName = document.getElementById('fname').value
+const lastName = document.getElementById('lname').value
+const email = document.getElementById('email').value
+const jobTitle = document.getElementById('job_title').value
+const office = document.getElementById('office').value
+const department = document.getElementById('department').value
+const phoneNumber = document.getElementById('phone_number').value
+const skypeId = document.getElementById('skype_id').value
 
+addEmployee(new Employee(firstName,lastName,email,jobTitle,office,department,phoneNumber,skypeId))
 
 
 }
