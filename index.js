@@ -381,12 +381,12 @@ function addEmployee(employee) {
 
   empDiv.appendChild(empData)
   document.getElementById("employee-content").appendChild(empDiv)
-  
+
   empDiv.addEventListener("click", function() {
     console.log("voeti")
   });
 
-  addFilter(employee)
+ 
 
 }
 
@@ -427,6 +427,7 @@ function submitEmployeeForm() {
 
   const employee = new Employee(img, firstName, lastName, email, jobTitle, office, department, phoneNumber, skypeId)
   addEmployee(employee)
+  addFilter(employee)
   employeeData.push(employee)
   closeForm()
   clearForm()
