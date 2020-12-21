@@ -454,11 +454,26 @@ function addPreferNames() {
 
 function searchByKeyword(value) {
 
-  if (value == "") {
+  const option = document.getElementById("filter-options")
+
+  if(value==""){
     addEmployeesByList(employeeData)
-  } else {
+  }
+  else if(option=="Preferred Name"){
     addEmployeesByList(employeeData.filter((e) => (e.firstName.indexOf(value) > -1) | (e.lastName.indexOf(value) > -1)))
   }
+  else if("Email"){
+    addEmployeesByList(employeeData.filter((e)=>e.email.indexOf(value)>-1))
+  }
+  else{
+    addEmployeesByList(employeeData.filter((e)=>e.phoneNumber.indexOf(value)>-1))
+  }
+
+  // if (value == "") {
+  //   addEmployeesByList(employeeData)
+  // } else {
+  //   addEmployeesByList(employeeData.filter((e) => (e.firstName.indexOf(value) > -1) | (e.lastName.indexOf(value) > -1)))
+  // }
 }
 
 
