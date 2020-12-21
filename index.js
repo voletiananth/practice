@@ -453,6 +453,7 @@ function addPreferNames() {
 }
 
 function searchByKeyword(value) {
+
   if (value == "") {
     addEmployeesByList(employeeData)
   } else {
@@ -465,4 +466,10 @@ function searchByKeyword(value) {
 function byAlphabet(text) {
   console.log(text)
   addEmployeesByList(employeeData.filter((e) => e.firstName.charAt(0).toUpperCase() == text))
+}
+
+
+function clearSearch(){
+  document.getElementById('search-input').value=''
+  addEmployeesByList(employeeData)
 }
