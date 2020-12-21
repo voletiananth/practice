@@ -28,6 +28,8 @@ class Employee {
 
 
 
+
+
 var employeeData = [];
 var departments = [new FilterItem("IT"), new FilterItem("Human Resources"), new FilterItem("MD"), new FilterItem("Sales")]
 var offices = [new FilterItem("Seattle"), new FilterItem("India")]
@@ -453,21 +455,29 @@ function addPreferNames() {
 }
 
 function searchByKeyword(value) {
+ 
 
-  const option = document.getElementById("filter-options")
-
+  const option = document.getElementById("filter-options").value
+  
   if(value==""){
     addEmployeesByList(employeeData)
   }
-  else if(option=="Preferred Name"){
+  else if(option=="preferredname"){
     addEmployeesByList(employeeData.filter((e) => (e.firstName.indexOf(value) > -1) | (e.lastName.indexOf(value) > -1)))
   }
-  else if("Email"){
+  else if("email"==option){
     addEmployeesByList(employeeData.filter((e)=>e.email.indexOf(value)>-1))
   }
-  else{
+  else if("phno"==option){
+    console.log(value)
     addEmployeesByList(employeeData.filter((e)=>e.phoneNumber.indexOf(value)>-1))
   }
+  else{
+    addEmployeesByList(employeeData)
+  }
+  
+   document.getElementById('search-input').value=''
+ 
 
   // if (value == "") {
   //   addEmployeesByList(employeeData)
