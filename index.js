@@ -156,6 +156,11 @@ function addListeners() {
   })
 
 
+  document.getElementById('employee-form').addEventListener('submit',(ev)=>{
+    ev.preventDefault()
+    submitEmployeeForm()
+  })
+
 
 
 }
@@ -425,13 +430,16 @@ function submitEmployeeForm() {
 
 
 
+
+
   const employee = new Employee(img, firstName, lastName, email, jobTitle, office, department, phoneNumber, skypeId)
   addEmployee(employee)
   addFilter(employee)
   employeeData.push(employee)
   closeForm()
   clearForm()
-  return true
+  
+  
 }
 
 

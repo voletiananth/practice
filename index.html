@@ -9,7 +9,7 @@
   </head>
   <body>
     <div class="form-popup" id="addEmployeeForm">
-      <form  onsubmit="return submitEmployeeForm()"  id="employee-form" >
+      <form  id="employee-form" >
         <div class="chooseImg">
           <div class="imgDiv"><img id="pimg" width="60" height="60"></div>
           <div class="chooseDiv" ><input  id="imgChoose" onchange="showImage(event)" type="file"  accept="image/*" required></div>
@@ -199,17 +199,17 @@
           <div class="filter-by-input">
             <div id="left-container">
               <div id="search-by-input">
-                <form action="#">
+             
                   <a>Search</a>
-                <input
-                  type="search"
+                <input 
+                  type="text"
                   onchange="searchByKeyword(this.value)"
                   placeholder="Enter any keyword"
                   name="search"
                   id="search-input"
                 />
-                <input id="search-btn" type="reset" value="Clear" />
-                </form>
+                <input onclick="document.getElementById('search-input').value=''" id="search-btn" type="button" value="Clear" />
+               
               </div>
               <div id="filter-by">
                 <a>Filter by</a>
